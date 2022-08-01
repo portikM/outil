@@ -119,4 +119,27 @@ export class StorageService {
       );
     });
   }
+
+  async objectExists(mediaType: string, key: string): Promise<boolean> {
+    const s3 = this.getS3();
+    const extension = mediaType === MediaTypesEnum.AUDIO ? '.mp3' : '.mp4';
+    return new Promise((resolve, reject) => {
+      s3.headObject(
+        {
+          Bucket: OUTPUT_BUCKET,
+          Key: `${mediaType}/${key + extension}`,
+        },
+        (err, _data) => {
+          if (err) {
+            if (err.statusCode === 404) {
+              resolve(false);
+            }
+            reject(err);
+          } else {
+            resolve(true);
+          }
+        },
+      );
+    });
+  }
 }

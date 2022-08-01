@@ -10,6 +10,8 @@ import { ConcatService } from './concat/concat.service';
 import { ListStorageService } from './list-storage/list-storage.service';
 import { ClearStorageService } from './clear-storage/clear-storage.service';
 import { DeleteController } from './delete/delete.controller';
+import { DownloadController } from './download/download.controller';
+import { DownloadService } from './download/download.service';
 
 @Module({
   imports: [InfrastructureModule, ConfigModule.forRoot()],
@@ -18,6 +20,7 @@ import { DeleteController } from './delete/delete.controller';
     TrimController,
     ConcatController,
     DeleteController,
+    DownloadController,
   ],
   providers: [
     UploadService,
@@ -25,6 +28,7 @@ import { DeleteController } from './delete/delete.controller';
     ConcatService,
     ListStorageService,
     ClearStorageService,
+    DownloadService,
   ],
 })
 export class AppModule {}

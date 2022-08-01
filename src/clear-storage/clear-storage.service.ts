@@ -18,6 +18,6 @@ export class ClearStorageService {
   }
 
   async deleteObject(key: string): Promise<void> {
-    return await this.storageService.deleteObject(OUTPUT_BUCKET, key);
+    return this.storageService.deleteObject(OUTPUT_BUCKET, key);
   }
 }
