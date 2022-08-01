@@ -16,12 +16,14 @@ provider:
           Action:
             - s3:PutObject
             - s3:GetObject
+            - s3:DeleteObject
           Resource: 'arn:aws:s3:::${self:custom.inputBucket}/*'
         - Effect: Allow
           Action:
             - s3:PutObject
             - s3:PutObjectAcl
             - s3:GetObject
+            - s3:DeleteObject
           Resource: 'arn:aws:s3:::${self:custom.outputBucket}/*'
         - Effect: Allow
           Action:
@@ -34,6 +36,10 @@ provider:
         - Effect: Allow
           Action:
             - sqs:SendMessage
+          Resource: ${self:custom.deleteObjectsFromS3Queue.arn}
+        - Effect: Allow
+          Action:
+            - sqs:ReceiveMessage
           Resource: ${self:custom.deleteObjectsFromS3Queue.arn}
   environment:
     INPUT_BUCKET: ${self:custom.inputBucket}
@@ -51,8 +57,13 @@ functions:
       - !Sub arn:aws:lambda:${self:custom.region}:${AWS::AccountId}:layer:ffmpeg:1
   listStorage:
     handler: src/lambda-list-storage.handler
+    # events:
+    #   - schedule: rate(1 hour)
+  deleteObjectsFromStorage:
+    handler: src/lambda-clear-storage.handler
     events:
-      - schedule: rate(1 minute)
+      - sqs:
+          arn: ${self:custom.deleteObjectsFromS3Queue.arn}
 
 resources:
   Resources:

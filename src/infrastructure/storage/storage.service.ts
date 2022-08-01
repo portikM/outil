@@ -100,4 +100,23 @@ export class StorageService {
       );
     });
   }
+
+  async deleteObject(bucket: string, key: string): Promise<void> {
+    const s3 = this.getS3();
+    return new Promise((resolve, reject) => {
+      s3.deleteObject(
+        {
+          Bucket: bucket,
+          Key: key,
+        },
+        (err, _data) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        },
+      );
+    });
+  }
 }

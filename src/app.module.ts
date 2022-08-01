@@ -8,10 +8,23 @@ import { TrimService } from './trim/trim.service';
 import { ConcatController } from './concat/concat.controller';
 import { ConcatService } from './concat/concat.service';
 import { ListStorageService } from './list-storage/list-storage.service';
+import { ClearStorageService } from './clear-storage/clear-storage.service';
+import { DeleteController } from './delete/delete.controller';
 
 @Module({
   imports: [InfrastructureModule, ConfigModule.forRoot()],
-  controllers: [UploadController, TrimController, ConcatController],
-  providers: [UploadService, TrimService, ConcatService, ListStorageService],
+  controllers: [
+    UploadController,
+    TrimController,
+    ConcatController,
+    DeleteController,
+  ],
+  providers: [
+    UploadService,
+    TrimService,
+    ConcatService,
+    ListStorageService,
+    ClearStorageService,
+  ],
 })
 export class AppModule {}

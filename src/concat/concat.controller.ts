@@ -1,6 +1,7 @@
 import {
   Controller,
   Post,
+  HttpCode,
   UsePipes,
   ValidationPipe,
   Body,
@@ -14,6 +15,7 @@ export class ConcatController {
   constructor(private concatService: ConcatService) {}
 
   @Post(`/${MediaTypesEnum.AUDIO}`)
+  @HttpCode(200)
   @UsePipes(new ValidationPipe())
   async concatAudioFiles(
     @Body() concatAudioDto: ConcatAudioDto,

@@ -41,7 +41,7 @@ export class ListStorageService {
       const batch = staleOutputObjects.slice(i, i + 10);
 
       await this.queueService.postMessage({
-        bucket: INPUT_BUCKET,
+        bucket: OUTPUT_BUCKET,
         batch,
       });
     }

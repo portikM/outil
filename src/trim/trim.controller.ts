@@ -1,6 +1,7 @@
 import {
   Controller,
   Post,
+  HttpCode,
   UsePipes,
   ValidationPipe,
   Body,
@@ -14,6 +15,7 @@ export class TrimController {
   constructor(private trimService: TrimService) {}
 
   @Post(`/${MediaTypesEnum.AUDIO}`)
+  @HttpCode(200)
   @UsePipes(new ValidationPipe())
   async trimAudio(@Body() trimAudioDto: TrimAudioDto): Promise<string> {
     return await this.trimService.trimAudio(trimAudioDto);
