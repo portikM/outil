@@ -4,19 +4,22 @@ import {
   UsePipes,
   ValidationPipe,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { UploadService } from './upload.service';
-import { GetUploadUrlDto } from './dto/get-upload-url-dto.dto';
+import { GetUploadUrlDto } from './dto/get-upload-url.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('upload')
 export class UploadController {
   constructor(private uploadService: UploadService) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   @UsePipes(new ValidationPipe())
   async getUploadUrl(
     @Query() getUploadUrlDto: GetUploadUrlDto,
   ): Promise<string> {
-    return await this.uploadService.getUploadUrl(getUploadUrlDto);
+    return this.uploadService.getUploadUrl(getUploadUrlDto);
   }
 }

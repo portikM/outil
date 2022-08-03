@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { StorageService } from '../infrastructure/storage/storage.service';
-import { GetUploadUrlDto } from './dto/get-upload-url-dto.dto';
+import { GetUploadUrlDto } from './dto/get-upload-url.dto';
 
 @Injectable()
 export class UploadService {

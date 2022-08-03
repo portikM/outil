@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { StorageService } from '../infrastructure/storage/storage.service';
-import { GetDownloadUrlDto } from './dto/get-download-url-dto.dto';
+import { GetDownloadUrlDto } from './dto/get-download-url.dto';
 
 const { OUTPUT_BUCKET = '' } = process.env;
 

@@ -45,6 +45,7 @@ provider:
     INPUT_BUCKET: ${self:custom.inputBucket}
     OUTPUT_BUCKET: ${self:custom.outputBucket}
     DELETE_OBJECTS_FROM_S3_QUEUE_URL: ${self:custom.deleteObjectsFromS3Queue.url}
+    AUTH_SECRET: ${self:custom.authSecret}
 
 functions:
   main:
@@ -88,3 +89,4 @@ custom:
     name: ${file(env.yml):DELETE_OBJECTS_FROM_S3_QUEUE}-${opt:stage, 'dev'}
     arn: !GetAtt DeleteObjectsFromS3Queue.Arn
     url: !Ref DeleteObjectsFromS3Queue
+  authSecret: ${file(env.yml):AUTH_SECRET}
