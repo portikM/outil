@@ -58,8 +58,8 @@ functions:
       - !Sub arn:aws:lambda:${self:custom.region}:${AWS::AccountId}:layer:ffmpeg:1
   listStorage:
     handler: src/lambda-list-storage.handler
-    # events:
-    #   - schedule: rate(1 hour)
+    events:
+      - schedule: rate(1 hour)
   deleteObjectsFromStorage:
     handler: src/lambda-clear-storage.handler
     events:

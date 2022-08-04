@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "84ebf6c8-6ce5-4abb-aa4d-13b36de5629e",
+		"name": "Outil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET UploadUrl",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/dev/api/v1/upload?mediaType=audio&key=audio1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"dev",
+						"api",
+						"v1",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "mediaType",
+							"value": "audio"
+						},
+						{
+							"key": "key",
+							"value": "audio1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST TrimAudio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"audio1\",\n    \"trimStart\": 0,\n    \"trimLength\": 1\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/dev/api/v1/trim/audio",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"dev",
+						"api",
+						"v1",
+						"trim",
+						"audio"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST ConcatAudio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"audio1\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/dev/api/v1/concat/audio",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"dev",
+						"api",
+						"v1",
+						"concat",
+						"audio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE DeleteAudio",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"audio1\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/dev/api/v1/delete/audio",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"dev",
+						"api",
+						"v1",
+						"delete",
+						"audio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET DownloadUrl",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/dev/api/v1/download?mediaType=audio&key=audio1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"dev",
+						"api",
+						"v1",
+						"download"
+					],
+					"query": [
+						{
+							"key": "mediaType",
+							"value": "audio"
+						},
+						{
+							"key": "key",
+							"value": "audio1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIiLCJpYXQiOm51bGwsImV4cCI6bnVsbCwiYXVkIjoiIiwic3ViIjoiYXVkaW8xIn0.9B8cHQ09QbNxBK2gXdI_YUNF0VBfrtWI9-5UIj6rrys",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://wt5uv6q4nj.execute-api.ca-central-1.amazonaws.com",
+			"type": "default"
+		}
+	]
+}
